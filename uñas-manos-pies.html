@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uñas, Manos y Pies - Instituto de Belleza Intercontinental</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-uñas-manos-pies.css">
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <style>
+        html {
+          scroll-behavior: smooth;
+        }
+    
+        /* Animación Fade In */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+    
+        .fade-in {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+    
+        .fade-in.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      </style>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Logo Belleza" class="logo-image">
+                </a>
+                <!-- Botón Inicio -->
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                </ul>
+                <!-- Botón Contacto -->
+                <a href="contacto.html" class="contact-btn">Contacto</a>
+                <!-- Botón Hamburguesa -->
+                <button class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+        <div class="hero-content">
+            <h1>Uñas, Manos y Pies</h1>
+            <p>Descubre el arte del diseño y cuidado profesional de uñas, manos y pies.</p>
+            <a href="contacto.html" class="btn-primary">Contacto</a>
+        </div>
+    </section>
+
+    <!-- ¿Por qué Estudiar con Nosotros? -->
+    <section class="porque-estudiar">
+        <h2 class="porque-title fade-in">¿Por qué Estudiar con Nosotros?</h2>
+        <div class="porque-grid">
+            <div class="porque-card fade-in">
+                <i class="fas fa-hand-sparkles"></i>
+                <h3>Especialización en Detalles</h3>
+                <p>Aprende a perfeccionar cada detalle en el cuidado de manos y pies.</p>
+            </div>
+            <div class="porque-card fade-in">
+                <i class="fas fa-briefcase"></i>
+                <h3>Oportunidades Profesionales</h3>
+                <p>Prepárate para trabajar en los mejores salones o iniciar tu propio negocio.</p>
+            </div>
+            <div class="porque-card fade-in">
+                <i class="fas fa-palette"></i>
+                <h3>Arte y Creatividad</h3>
+                <p>Domina las últimas técnicas de diseño y decoración de uñas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ventajas de Estudiar -->
+    <section class="ventajas">
+        <h2 class="ventajas-title fade-in">Ventajas de Estudiar con Nosotros</h2>
+        <div class="ventajas-list-container">
+            <ul class="advantages-list">
+                <li><i class="fas fa-check fade-in"></i> Docentes especializados en cuidado de uñas y estética.</li>
+                <li><i class="fas fa-check fade-in"></i> Materiales de calidad profesional para tus prácticas.</li>
+                <li><i class="fas fa-check fade-in"></i> Conexiones con la industria para asegurar tu éxito.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Habilidades que Adquirirás -->
+    <section class="habilidades">
+        <h2 class="habilidades-title fade-in">Habilidades que Adquirirás</h2>
+        <div class="skills-grid ">
+            <div class="skill-card fade-in">
+                <div class="skill-icon-circle">
+                    <i class="fas fa-file-medical"></i>
+                </div>
+                <h3>Cuidado de Uñas</h3>
+                <p>Domina técnicas avanzadas de limpieza y cuidado de uñas.</p>
+            </div>
+            <div class="skill-card fade-in">
+                <div class="skill-icon-circle">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Diseño Artístico</h3>
+                <p>Aprende a crear diseños únicos y personalizados.</p>
+            </div>
+            <div class="skill-card fade-in">
+                <div class="skill-icon-circle">
+                    <i class="fas fa-hand-holding-water"></i>
+                </div>
+                <h3>Hidratación y Masajes</h3>
+                <p>Descubre cómo ofrecer tratamientos relajantes y reparadores.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Instituto de Belleza Intercontinental. Todos los derechos reservados.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/intercontinental95/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100063640777102" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="mailto:intercontinental95@hotmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const fadeElements = document.querySelectorAll('.fade-in');
+    
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          }, { threshold: 0.1 });
+    
+          fadeElements.forEach((el) => observer.observe(el));
+        });
+      </script>
+      <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Instituto de Belleza Intercontinental</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-contacto.css">
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Logo Belleza" class="logo-image">
+                </a>
+                <!-- Botón Inicio -->
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                </ul>
+                <!-- Botón Hamburguesa -->
+               <button class="nav-toggle">
+                  <i class="fas fa-bars"></i>
+              </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="form-container fade-in">
+            <h2 class="fade-in-up">Contáctanos</h2>
+            <p class="fade-in-up">Déjanos tus datos y nos pondremos en contacto contigo para resolver tus dudas o programar tu inscripción.</p>
+            <!-- Formulario -->
+            <form id="contact-form" class="form-animated">
+                <div class="form-group">
+                    <label for="nombre" class="fade-in-left">Nombre Completo</label>
+                    <input type="text" id="nombre" placeholder="Ejemplo: María López" required class="fade-in-left">
+                </div>
+
+                <div class="form-group">
+                    <label for="correo" class="fade-in-right">Correo Electrónico</label>
+                    <input type="email" id="correo" placeholder="ejemplo@correo.com" required class="fade-in-right">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono" class="fade-in-left">Teléfono</label>
+                    <input type="tel" id="telefono" placeholder="Ejemplo: +52 123 456 7890" class="fade-in-left">
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion" class="fade-in-right">Mensaje</label>
+                    <textarea id="descripcion" rows="4" placeholder="Escribe tus dudas o solicitudes aquí..." class="fade-in-right"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha" class="fade-in-left">¿Cuándo prefieres que te contactemos?</label>
+                    <input type="date" id="fecha" class="fade-in-left">
+                </div>
+
+                <button type="submit" class="btn-primary fade-in-up">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Instituto de Belleza Intercontinental. Todos los derechos reservados.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/intercontinental95/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100063640777102" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="mailto:intercontinental95@hotmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const SUPABASE_URL = "https://ykzuqnwffqnrceitfqei.supabase.co";
+            const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrenVxbndmZnFucmNlaXRmcWVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUwMDcyMzcsImV4cCI6MjA1MDU4MzIzN30.M9S0a_WSdAAcN079JPlDusNE56tdNLB6_9VySy9yBZ0";
+            const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+            const form = document.getElementById("contact-form");
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const nombre = document.getElementById("nombre").value.trim();
+                const correo = document.getElementById("correo").value.trim();
+                const telefono = document.getElementById("telefono").value.trim();
+                const descripcion = document.getElementById("descripcion-sitio-web").value.trim();
+                const fecha = document.getElementById("fecha").value;
+
+                if (!nombre || !correo) {
+                    alert("Por favor, completa todos los campos requeridos.");
+                    return;
+                }
+
+                try {
+                    const { data, error } = await supabase.from("intercontinental-contacto").insert([
+                        {
+                            nombre,
+                            correo,
+                            telefono,
+                            descripcion,
+                            fecha: fecha || null,
+                        },
+                    ]);
+
+                    if (error) throw error;
+
+                    alert("¡Tu mensaje ha sido enviado exitosamente!");
+                    form.reset();
+                } catch (error) {
+                    alert("Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.");
+                    console.error("Error:", error.message);
+                }
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+
+</body>
+</html>
