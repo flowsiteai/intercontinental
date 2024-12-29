@@ -6,6 +6,8 @@ body {
     line-height: 1.6;
     background-color: #f9f9f9;
     text-align: center;
+    /* Evita scrollbar horizontal */
+    overflow-x: hidden;
 }
 
 .main-content {
@@ -16,12 +18,15 @@ body {
 /* Hero Section */
 .hero {
     background: url('images/unas-pro.png') no-repeat center center/cover;
-    height: 60vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
+    /* Evitar que la imagen se desborde en pantallas muy pequeñas */
+    background-size: cover;
+    background-position: center;
 }
 
 .hero h1 {
@@ -29,6 +34,11 @@ body {
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    /* Forzar el quiebre de palabras largas */
+    overflow-wrap: break-word; /* Estándar */
+    word-wrap: break-word;     /* Compatibilidad con navegadores antiguos */
+    word-break: break-word;    /* Romper palabra si no cabe */
+    hyphens: auto;            /* Guionar automáticamente si se usa lang="es" */
 }
 
 .hero p {
@@ -123,6 +133,7 @@ body {
     color: #e91e63;
     font-size: 1.5rem;
 }
+
 /* ¿Por qué Estudiar con Nosotros? */
 .porque-estudiar {
     background: linear-gradient(to bottom, #fef8f8, #ffffff);
@@ -180,3 +191,85 @@ body {
     color: #555;
 }
 
+/* ============ MEDIA QUERIES ============ */
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .hero {
+        height: 100vh;
+        padding: 1rem;
+        /* Ajusta si quieres que se vea más o menos alta la sección */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .ventajas, .habilidades, .porque-estudiar {
+        padding: 3rem 1.5rem;
+    }
+
+    .ventajas-title, .habilidades-title, .porque-title {
+        font-size: 1.8rem;
+    }
+
+    .advantages-list li {
+        font-size: 1rem;
+    }
+
+    .skills-grid {
+        /* Sigue adaptándose automáticamente */
+    }
+
+    .porque-grid {
+        /* Sigue adaptándose automáticamente */
+    }
+}
+
+/* Móviles (max-width: 500px) */
+@media (max-width: 500px) {
+    .hero {
+        height: 100vh;
+        padding: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem; 
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .ventajas, .habilidades, .porque-estudiar {
+        padding: 2rem 1rem;
+    }
+
+    .ventajas-title, .habilidades-title, .porque-title {
+        font-size: 1.5rem;
+    }
+
+    .advantages-list li {
+        font-size: 0.95rem;
+    }
+
+    /* Ajustar el tamaño de las tarjetas o contenedores si se desea */
+    .skill-card {
+        padding: 1.5rem;
+    }
+
+    .porque-card {
+        padding: 1.5rem;
+    }
+    
+    /* Evita cualquier desbordamiento de imágenes o de contenedor */
+    img, video {
+        max-width: 100%;
+        height: auto;
+    }
+}
